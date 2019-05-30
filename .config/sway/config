@@ -3,8 +3,6 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-#Wallpaper
-output * bg ~/pics/current_wallpaper fill
 
 # Screenshotting, requires slurp and grim to be installed
 set $location               ~/screenshot.png
@@ -36,11 +34,10 @@ gaps outer 5
 
 ### Input configuration
 
-input "*" {
+input "1739:0:Synaptics_TM2749-001" {
 tap enabled
-xkb_layout se
 }
-
+input * xkb_layout "se"
 ### Key bindings
 #
 # Basics:
@@ -66,21 +63,6 @@ xkb_layout se
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-# Backlight
-set $brighter               XF86MonBrightnessUp
-set $dimmer                 XF86MonBrightnessDown
-
-bindsym $brighter 	exec xbacklight -inc 10
-bindsym $dimmer 	exec xbacklight -dec 10
-
-# Volume control
-set $raise XF86AudioRaiseVolume
-set $lower XF86AudioLowerVolume
-set $mute XF86AudioMute
-
-bindsym $mute 		exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $raise 		exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $lower		exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 #
 # Moving around:
 #
@@ -204,8 +186,6 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command i3blocks -c ~/i3blocks.conf
-    modifier        $mod
-    mode            hide
 
     colors {
         statusline #ffffff
