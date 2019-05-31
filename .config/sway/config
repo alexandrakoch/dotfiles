@@ -250,7 +250,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command i3blocks -c ~/i3blocks.conf
+    status_command i3blocks -c ~/.i3blocks.conf
 
     colors {
 	statusline          $frost-3
