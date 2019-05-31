@@ -1,0 +1,6 @@
+#!/bin/sh
+# configure spotifyd to run this on playback
+curl -o /tmp/albumart "$(playerctl metadata mpris:artUrl)"
+TITLE=$(playerctl metadata title)
+ARTIST=$(playerctl metadata artist)
+notify-send -i /tmp/albumart "Spotify" "$ARTIST - $TITLE"

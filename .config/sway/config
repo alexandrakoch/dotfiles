@@ -12,6 +12,20 @@ set $grab_selection         slurp | grim -t png -g -
 bindsym shift+Print         exec $grab_screen $location
 bindsym Print               exec $grab_selection $location
 
+# Screen brightness, requires acpilight
+set $brighter		XF86MonBrightnessUp
+set $dimmer		XF86MonBrightnessDown
+bindsym $brighter 	exec xbacklight -inc 10
+bindsym $dimmer 	exec xbacklight -dec 10
+
+# Volume control
+
+set $raise 		XF86AudioRaiseVolume
+set $lower 		XF86AudioLowerVolume
+set $mute		XF86AudioMute
+bindsym $raise 		exec pactl set-sink-volume @DEFAULT_SINK@  +5%
+bindsym $lower		exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mute		exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ### Variables
 #
@@ -31,6 +45,10 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 # gaps
 gaps inner 7
 gaps outer 5
+
+# Wallpaper
+
+output * bg ~/pics/current_wallpaper fill
 
 ### Input configuration
 
@@ -181,7 +199,9 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    modifier	$mod
+    mode	hide
+    position 	top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
