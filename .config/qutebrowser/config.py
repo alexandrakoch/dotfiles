@@ -17,6 +17,7 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
+
 c.url.searchengines = {
     # Default search engine, with nothing else specified.
     "DEFAULT"   : "https://duckduckgo.com/?q={}",
@@ -30,6 +31,8 @@ c.url.searchengines = {
     "r"         : "https://reddit.com/r/{}"
     }
 
+# Set downloads directory
+c.downloads.location.directory      = '~/downloads/'
 #FONTS
 c.fonts.monospace               = '"Source Code Pro", "Ubuntu Monospace", Monospace, monospace'
 c.fonts.completion.entry        = '10pt monospace'
