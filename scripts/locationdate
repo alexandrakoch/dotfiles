@@ -1,0 +1,4 @@
+#!/bin/sh
+LOCATION=~/pics/screenshots/
+DATE=$(date +"%F %H:%M:%S Screenshot.png")
+echo $LOCATION$DATE

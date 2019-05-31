@@ -5,12 +5,12 @@
 # Read `man 5 sway` for a complete reference.
 
 # Screenshotting, requires slurp and grim to be installed
-set $location               ~/screenshot.png
+set $location               $(~/scripts/locationdate)
 set $get_output             swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}'
 set $grab_screen            grim -t png -o $($get_output)
 set $grab_selection         slurp | grim -t png -g -
-bindsym shift+Print         exec $grab_screen $location
-bindsym Print               exec $grab_selection $location
+bindsym shift+Print         exec $grab_screen "$location"
+bindsym Print               exec $grab_selection "$location"
 
 # Screen brightness, requires acpilight
 set $brighter		XF86MonBrightnessUp
@@ -57,10 +57,11 @@ output * bg ~/pics/current_wallpaper fill
 
 ### Input configuration
 
-input "1739:0:Synaptics_TM2749-001" {
+input * {
 tap enabled
+xkb_layout "se"
 }
-input * xkb_layout "se"
+
 ### Key bindings
 #
 # Basics:
