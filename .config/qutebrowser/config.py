@@ -31,6 +31,12 @@ c.url.searchengines = {
     "r"         : "https://reddit.com/r/{}"
     }
 
+# Do stuff with URLs
+# ; for hints, , for current page.
+config.bind(';t', 'hint links spawn -v transmission-remote -a {hint-url}')
+config.bind(';p', 'hint links spawn -dv mpv {hint-url}')
+config.bind(',p', 'spawn -dv mpv {url}')
+
 # Set downloads directory
 c.downloads.location.directory      = '~/downloads/'
 #FONTS

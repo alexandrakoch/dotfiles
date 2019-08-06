@@ -27,9 +27,9 @@ bindsym $raise 		exec pactl set-sink-volume @DEFAULT_SINK@  +5%
 bindsym $lower		exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mute		exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-# start dunst
+# start mako
 
-exec dunst
+exec mako
 
 
 ### Variables
@@ -45,7 +45,7 @@ set $right l
 set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec
+set $menu rofi -show run | xargs swaymsg exec
 
 # gaps
 gaps inner 7
@@ -53,8 +53,7 @@ gaps outer 5
 
 # Wallpaper
 
-output * bg ~/pics/current_wallpaper fill
-
+exec swaybg -i ~/pics/current_wallpaper -m fill
 ### Input configuration
 
 input * {
@@ -266,5 +265,5 @@ bar {
 		binding_mode        $orange     $polar-1    $orange
           }
 }
-new_window pixel
+default_border pixel
 include /etc/sway/config.d/*
